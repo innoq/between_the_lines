@@ -1,6 +1,5 @@
-package btl.simple.service;
+package btl.simple.candidate;
 
-import btl.simple.model.Candidate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
