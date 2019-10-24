@@ -1,1 +1,7 @@
 management.endpoints.web.exposure.include: beans,mappings
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/jugendhilfe
+  username: postgres
+  password: postgres
+
+
