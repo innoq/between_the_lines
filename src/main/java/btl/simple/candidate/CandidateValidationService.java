@@ -8,9 +8,12 @@ import java.util.Map;
 @Service
 public class CandidateValidationService {
 
-  public Map<Candidate, Error> validateCandidates(List<Candidate> candidates) {
+  public Map<Candidate, ValidationErrors> validateCandidates(List<Candidate> candidates) {
     return null;
   }
 
+  public ValidationErrors validateCandidate(Candidate candidate) {
+    return null;
+  }
 
 }
