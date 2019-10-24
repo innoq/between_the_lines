@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # PIM Config
-DATABASE_NAME=bifrost
+DATABASE_NAME=jugendhilfe
 
 # configuration
 POSTGRES_VERSION=11
 
 # script start
-CONTAINER_NAME=bifrost-postgres
+CONTAINER_NAME=between-the-lines-postgres
 IMAGE=postgres:$POSTGRES_VERSION
 PORT_MAPPINGS="-p 5432:5432"
-ENV_VARS="-e POSTGRES_USER=admin -e POSTGRES_PASSWORD=nimda"
+ENV_VARS="-e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres"
 
 function remove_container() {
   if [[ ! -z $(docker ps -f name=${CONTAINER_NAME} --format={{.ID}}) ]];
@@ -33,8 +33,8 @@ function start() {
 }
 
 function init() {
-  docker exec ${CONTAINER_NAME} bin/bash -c "PGPASSWORD=nimda psql -U admin -c 'drop database if exists $DATABASE_NAME'"
-  docker exec ${CONTAINER_NAME} bin/bash -c "PGPASSWORD=nimda psql -U admin -c 'create database $DATABASE_NAME'"
+  docker exec ${CONTAINER_NAME} bin/bash -c "PGPASSWORD=postgres psql -U postgres -c 'drop database if exists $DATABASE_NAME'"
+  docker exec ${CONTAINER_NAME} bin/bash -c "PGPASSWORD=postgres psql -U postgres -c 'create database $DATABASE_NAME'"
 }
 
 function stop() {
