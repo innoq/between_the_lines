@@ -41,6 +41,20 @@ public class Candidate {
         return Objects.hash(name, address, postalCode, location, state, phoneNumber, mail, website);
     }
 
+    @Override
+    public String toString() {
+        return "Candidate{" +
+            "name='" + name + '\'' +
+            ", address='" + address + '\'' +
+            ", postalCode='" + postalCode + '\'' +
+            ", location='" + location + '\'' +
+            ", state='" + state + '\'' +
+            ", phoneNumber=" + phoneNumber +
+            ", mail='" + mail + '\'' +
+            ", website='" + website + '\'' +
+            '}';
+    }
+
     public String getName() {
         return name;
     }
