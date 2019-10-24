@@ -25,22 +25,9 @@ import org.springframework.context.annotation.Configuration;
 
 import btl.simple.service.HelloWorldService;
 
-@Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleSimpleApplication implements CommandLineRunner {
-
-	// Simple example shows how a command line spring application can execute an
-	// injected bean service. Also demonstrates how you can use @Value to inject
-	// command line args ('--name=whatever') or application properties
-
-	@Autowired
-	private HelloWorldService helloWorldService;
-
-	@Override
-	public void run(String... args) {
-		System.out.println(this.helloWorldService.getHelloMessage());
-	}
+public class SampleSimpleApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SampleSimpleApplication.class, args);
