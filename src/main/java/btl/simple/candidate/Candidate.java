@@ -1,4 +1,4 @@
-package btl.simple.model;
+package btl.simple.candidate;
 
 import java.util.List;
 import java.util.Objects;

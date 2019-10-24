@@ -22,9 +22,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleSimpleApplication {
+public class Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(SampleSimpleApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 }
