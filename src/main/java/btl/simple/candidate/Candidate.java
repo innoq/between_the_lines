@@ -1,4 +1,4 @@
-package btl.simple.model;
+package btl.simple.candidate;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +39,20 @@ public class Candidate {
     @Override
     public int hashCode() {
         return Objects.hash(name, address, postalCode, location, state, phoneNumber, mail, website);
+    }
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+            "name='" + name + '\'' +
+            ", address='" + address + '\'' +
+            ", postalCode='" + postalCode + '\'' +
+            ", location='" + location + '\'' +
+            ", state='" + state + '\'' +
+            ", phoneNumber=" + phoneNumber +
+            ", mail='" + mail + '\'' +
+            ", website='" + website + '\'' +
+            '}';
     }
 
     public String getName() {

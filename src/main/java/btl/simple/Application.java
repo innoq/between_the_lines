@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package btl.simple.service;
+package btl.simple;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
-@Component
-public class HelloWorldService {
+@EnableAutoConfiguration
+@ComponentScan
+public class Application {
 
-	@Value("${name:World}")
-	private String name;
-
-	public String getHelloMessage() {
-		return "Hello " + this.name;
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 }
