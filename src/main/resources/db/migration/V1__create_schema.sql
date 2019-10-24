@@ -4,10 +4,10 @@ CREATE TABLE jugendhilfe.candidate (
     id INT NOT NULL PRIMARY KEY,
     name VARCHAR,
     address VARCHAR,
-    postalcode VARCHAR,
+    postal_code VARCHAR,
     location VARCHAR,
     state VARCHAR,
-    phonenumber VARCHAR,
+    phone_numbers VARCHAR,
     mail VARCHAR,
     website VARCHAR
 );

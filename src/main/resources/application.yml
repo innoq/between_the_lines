@@ -3,5 +3,10 @@ spring.datasource:
   url: jdbc:postgresql://localhost:5432/jugendhilfe
   username: postgres
   password: postgres
+spring:
+  jpa:
+    properties:
+      hibernate:
+        default_schema: jugendhilfe
 
 
