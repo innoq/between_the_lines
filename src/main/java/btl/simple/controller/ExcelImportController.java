@@ -1,6 +1,7 @@
 package btl.simple.controller;
 
 import btl.simple.candidate.Candidate;
+import btl.simple.candidate.CandidateService;
 import btl.simple.candidate.CandidateValidationService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -13,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 @Controller
@@ -26,17 +26,20 @@ public class ExcelImportController {
     @Autowired
     CandidateValidationService candidateValidationService;
 
+    @Autowired
+    CandidateService candidateService;
+
     @PostMapping
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) throws IOException {
         System.out.println("Receiving excel file");
         String store = saveFile(file);
         System.out.println("stored");
-        StringBuilder msg = parseExcelFile(store);
+        String msg = parseExcelFile(store).toString();
         System.out.println("parsed");
+        System.out.println(msg);
         redirectAttributes.addFlashAttribute("message",
-            msg.toString());
-
+            msg);
         return "redirect:/";
     }
 
@@ -92,7 +95,7 @@ public class ExcelImportController {
         String mail = DATA_FORMATTER.formatCellValue(next);
         next = row.getCell(7);
         String website = DATA_FORMATTER.formatCellValue(next);
-        Candidate candidate = new Candidate(name, address, postalCode, location, state, phoneNumbers, mail, website);
+        Candidate candidate = candidateService.getCandidate(name, address, postalCode, location, state, phoneNumbers, mail, website);
         return candidate;
     }
 

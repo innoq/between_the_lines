@@ -1,168 +1,49 @@
 package btl.simple.candidate;
 
-import com.google.common.base.Splitter;
+import java.io.IOException;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.List;
-import java.util.Objects;
+public interface Candidate {
+    String contentPresent();
 
-@Entity(name = "candidate")
-public class Candidate {
+    boolean hasContent();
 
-  @Id
-  private long id;
+    long getId();
 
-  private String name;
+    void setId(long id);
 
-  private String address;
+    String getName();
 
-  private String postalCode;
+    void setName(String name);
 
-  private String location;
+    String getAddress();
 
-  private String state;
+    void setAddress(String address);
 
-  private String phoneNumbers;
+    String getPostalCode();
 
-  private String mail;
+    void setPostalCode(String postalCode);
 
-  private String website;
+    String getLocation();
 
-  @Override
-  public String toString() {
-    return "Candidate{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", address='" + address + '\'' +
-        ", postalCode='" + postalCode + '\'' +
-        ", location='" + location + '\'' +
-        ", state='" + state + '\'' +
-        ", phoneNumbers='" + phoneNumbers + '\'' +
-        ", mail='" + mail + '\'' +
-        ", website='" + website + '\'' +
-        '}';
-  }
+    void setLocation(String location);
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Candidate candidate = (Candidate) o;
-    return id == candidate.id &&
-        Objects.equals(name, candidate.name) &&
-        Objects.equals(address, candidate.address) &&
-        Objects.equals(postalCode, candidate.postalCode) &&
-        Objects.equals(location, candidate.location) &&
-        Objects.equals(state, candidate.state) &&
-        Objects.equals(phoneNumbers, candidate.phoneNumbers) &&
-        Objects.equals(mail, candidate.mail) &&
-        Objects.equals(website, candidate.website);
-  }
+    String getState();
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, address, postalCode, location, state, phoneNumbers, mail, website);
-  }
+    void setState(String state);
 
-  public long getId() {
-    return id;
-  }
+    String getPhoneNumbers();
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    void setPhoneNumbers(String phoneNumbers);
 
-  public String getName() {
-    return name;
-  }
+    String getMail();
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    void setMail(String mail);
 
-  public String getAddress() {
-    return address;
-  }
+    String getWebsite();
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
+    void setWebsite(String website);
 
-  public String getPostalCode() {
-    return postalCode;
-  }
+    String getWebcontent() throws IOException;
 
-  public void setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public String getState() {
-    return state;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public String getPhoneNumbers() {
-    return phoneNumbers;
-  }
-
-  public void setPhoneNumbers(String phoneNumbers) {
-    this.phoneNumbers = phoneNumbers;
-  }
-
-  public String getMail() {
-    return mail;
-  }
-
-  public void setMail(String mail) {
-    this.mail = mail;
-  }
-
-  public String getWebsite() {
-    return website;
-  }
-
-  public void setWebsite(String website) {
-    this.website = website;
-  }
-
-  public static Candidate fromTabCsv(String candidateAsCsv) {
-    List<String> attributes = Splitter.on("\t").splitToList(candidateAsCsv);
-    Candidate candidate = new Candidate();
-    candidate.setName(attributes.get(0));
-    candidate.setAddress(attributes.get(1));
-    candidate.setPostalCode(attributes.get(2));
-    candidate.setLocation(attributes.get(3));
-    candidate.setState(attributes.get(4));
-    candidate.setPhoneNumbers(attributes.get(5));
-    candidate.setMail(attributes.get(6));
-    candidate.setWebsite(attributes.get(7));
-    return candidate;
-  }
-
-  public Candidate() {
-    super();
-  }
-
-  public Candidate(String name, String address, String postalCode, String location, String state, String phoneNumbers, String mail, String website) {
-    this.name = name;
-    this.address = address;
-    this.postalCode = postalCode;
-    this.location = location;
-    this.state = state;
-    this.phoneNumbers = phoneNumbers;
-    this.mail = mail;
-    this.website = website;
-  }
+    void setWebcontent(String webcontent);
 }
