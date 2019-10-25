@@ -2,3 +2,4 @@
 /myproject.iml
 target/
 *.xlsx
+/results*.csv
